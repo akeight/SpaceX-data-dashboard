@@ -63,7 +63,7 @@ h3 {
   align-items: center;
   gap: 1rem;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   background-color: #fff;
   padding: 0.5rem;
@@ -102,7 +102,7 @@ h3 {
 
 .launch-card-content a {
   font-size: 0.85rem;
-  color: #2754b4;
+  color: #2563eb;
   text-decoration: none;
 }
 
@@ -151,7 +151,7 @@ li {
 .stat-card {
   background: #f8fafc;
   color: #242424;
-  border-radius: 5px;
+  border-radius: 1rem;
   padding: 1rem 1.25rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   flex: 1;
