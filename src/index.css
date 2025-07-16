@@ -34,3 +34,117 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+h3 {
+  color: #242424;
+}
+
+.dashboard {
+  width: 700px;
+}
+
+.launch-card {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  background-color: #fff;
+  padding: 0.5rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.launch-card-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  background: #f3f3f3;
+  flex-shrink: 0;
+}
+
+.launch-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.launch-card-content h2 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.launch-card-content p {
+  margin: 0;
+  color: #333;
+}
+
+.launch-card-content a {
+  font-size: 0.85rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.launch-card-content a:hover {
+  text-decoration: underline;
+}
+
+.Success {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.Failure {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.launch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+li {
+  list-style: none;
+}
+
+.stats-panel {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.stat-card {
+  background: #f8fafc;
+  color: #242424;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  flex: 1;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 0.95rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
