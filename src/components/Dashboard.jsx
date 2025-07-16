@@ -26,6 +26,8 @@ const Dashboard = ({ allLaunches, launchpads, filters }) => {
     return <div className="no-launches">No launches found for the selected filters.</div>;
   }
 
+  console.log("Filtered launch data:", filteredLaunches);
+
   return (
     <div className="dashboard">
       <ul className="launch-list">

@@ -25,9 +25,17 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 h1 {
@@ -41,6 +49,11 @@ h3 {
 
 .dashboard {
   width: 700px;
+  float: right;
+  border: #9e9b9b81 solid 1px;
+  border-radius: 5px;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .launch-card {
@@ -50,7 +63,7 @@ h3 {
   align-items: center;
   gap: 1rem;
   border: 1px solid #ddd;
-  border-radius: 1rem;
+  border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   background-color: #fff;
   padding: 0.5rem;
@@ -89,7 +102,7 @@ h3 {
 
 .launch-card-content a {
   font-size: 0.85rem;
-  color: #2563eb;
+  color: #2754b4;
   text-decoration: none;
 }
 
@@ -97,13 +110,18 @@ h3 {
   text-decoration: underline;
 }
 
-.Success {
+.status-success {
   color: #22c55e;
   font-weight: 600;
 }
 
-.Failure {
+.status-failure {
   color: #ef4444;
+  font-weight: 600;
+}
+
+.status-upcoming {
+  color: #f59e0b;
   font-weight: 600;
 }
 
@@ -119,18 +137,21 @@ li {
 }
 
 .stats-panel {
+  float: right;
   display: flex;
   justify-content: space-between;
+  width: 700px;
+  border: #9e9b9b81 solid 1px;
+  border-radius: 5px;
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #e5e5e5;
 }
 
 .stat-card {
   background: #f8fafc;
   color: #242424;
-  border-radius: 1rem;
+  border-radius: 5px;
   padding: 1rem 1.25rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   flex: 1;
@@ -147,4 +168,67 @@ li {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
+}
+
+.filters-aside {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  height: 450px;
+  width: 300px;
+  margin-bottom: 1.5rem;
+  border: #9e9b9b81 solid 1px;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding-top: 30px;
+}
+
+.filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 75%;
+}
+
+.filter-panel h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.search-input,
+.year-select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #383737;
+  color: #f3f3f3;
+  font-size: 0.9rem;
+}
+
+.search-input::placeholder {
+  color: #b1afaf;
+}
+
+.filter-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.filter-checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.filter-checkboxes input[type="checkbox"] {
+  accent-color: #3b82f6; /* blue accent for checkboxes */
+  transform: scale(1.2);
 }

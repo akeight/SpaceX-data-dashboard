@@ -29,7 +29,7 @@ function App() {
     try {
       const res = await fetch("https://api.spacexdata.com/v5/launches");
       const data = await res.json();
-      console.log("Total launches in API:", data.length);
+      console.log("Launch data:", data);
       setAllLaunches(data);
     } catch (err) {
       console.error("Error fetching launches:", err);
@@ -102,9 +102,16 @@ function App() {
 
   return (
     <>
+      <div className="header">
+        <h1>SpaceX Launch Dashboard</h1>
+        <p>Explore SpaceX launch data with filters and statistics</p>
+      </div>
       <Filters filters={filters} setFilters={setFilters} allLaunches={allLaunches} />
+      
+      <div className="app-container">
       <StatsPanel allLaunches={allLaunches} stats={stats} />
       <Dashboard allLaunches={allLaunches} launchpads={launchpads} filters={filters} />
+      </div>
     </>
   )
 }

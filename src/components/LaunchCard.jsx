@@ -12,9 +12,27 @@ const LaunchCard = ({ launch, launchpads }) => {
       <div className="launch-card-content">
         <h3>{launch.name}</h3>
         <p>
-          Launch Date: {new Date(launch.date_utc).toLocaleDateString()}
+          Launch Date: <span>{new Date(launch.date_utc).toLocaleDateString()}</span>
         </p>
-        <p>Status: <span className={launch.success ? "Success" : "Failure"}>{launch.success ? "Success" : "Failure"}</span></p>
+        <p>
+          Status:{" "}
+          <span
+            className={
+              launch.success === true
+                ? "status-success"
+                : launch.success === false
+                ? "status-failure"
+                : "status-upcoming"
+        }
+          >
+            {launch.success === true
+              ? "Success"
+              : launch.success === false
+              ? "Failure"
+              : "Upcoming"}
+          </span>
+        </p>
+
         <p>🚀 Launch Site: <span>{launchpad?.locality || "Unknown"}</span></p>
           {launch.links?.webcast && (
         <a

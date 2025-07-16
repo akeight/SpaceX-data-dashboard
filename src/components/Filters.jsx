@@ -4,12 +4,29 @@ const Filters = ({ filters, setFilters, allLaunches }) => {
             <h2>Filter Launches</h2>
             <div className="filter-panel">
                 <input
+                    className="search-input"
                     type="text"
                     placeholder="Search for launch..."
                     value={filters.searchTerm}
                     onChange={(e) => setFilters((prev) => ({ ...prev, searchTerm: e.target.value }))}
                 />
 
+                <select
+                    value={filters.selectedYear}
+                    onChange={(e) => setFilters((prev) => ({ ...prev, selectedYear: e.target.value }))}
+                    className="year-select">
+                <option value="All">All Years</option>
+                    {Array.from(
+                        new Set(allLaunches.map((launch) => new Date(launch.date_utc).getFullYear()))
+                    )
+                        .sort((a, b) => b - a)
+                        .map((year) => (
+                        <option key={year} value={year}>
+                            {year}
+                        </option>
+                    ))}
+                </select>
+            <div className="filter-checkboxes">    
             <label>
                 <input
                     type="checkbox"
@@ -21,7 +38,7 @@ const Filters = ({ filters, setFilters, allLaunches }) => {
                         }))
                     }
                 />
-                Success
+                 ✅ Success
             </label>
 
             <label>
@@ -35,7 +52,7 @@ const Filters = ({ filters, setFilters, allLaunches }) => {
                         }))
                     }
                 />
-                Failure
+                ❌ Failure
             </label>
 
             <label>
@@ -49,26 +66,9 @@ const Filters = ({ filters, setFilters, allLaunches }) => {
                         }))
                     }
                 />
-                Upcoming
+                ⏳ Upcoming
             </label>
-
-            <label className="year-select">Select Year:</label>
-
-            <select
-                value={filters.selectedYear}
-                onChange={(e) => setFilters((prev) => ({ ...prev, selectedYear: e.target.value }))}
-            >
-            <option value="All">All Years</option>
-                {Array.from(
-                    new Set(allLaunches.map((launch) => new Date(launch.date_utc).getFullYear()))
-                )
-                    .sort((a, b) => b - a)
-                    .map((year) => (
-                    <option key={year} value={year}>
-                        {year}
-                    </option>
-                ))}
-            </select>
+            </div>
         </div>
     </div>
     );
