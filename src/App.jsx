@@ -3,6 +3,7 @@ import './App.css'
 import Dashboard from './components/Dashboard'
 import StatsPanel from './components/StatsPanel'
 import Filters from './components/Filters';
+import { useRoutes } from "react-router-dom"
 
 function App() {
   const [allLaunches, setAllLaunches] = useState([]);
@@ -98,7 +99,23 @@ function App() {
   });
 }, [allLaunches, rockets, launchpads]);
 
- 
+//fix routes and return {element} to render the dashboard and filters
+  //useRoutes is used to define the routes for the application
+
+ let element = useRoutes([
+{
+  path: "/",
+  element: <Dashboard allLaunches={allLaunches} launchpads={launchpads} filters={filters} />,
+},
+{
+  path: "/",
+  element: <Filters filters={filters} setFilters={setFilters} allLaunches={allLaunches} />
+},
+{
+  path: "/LaunchDetails/:id",
+  element: <DetailView />,
+},
+])
 
   return (
     <>
