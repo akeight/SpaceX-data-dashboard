@@ -1,6 +1,6 @@
 import StatsCard from "./StatsCard";
 
-const StatsPanel = ({ allLaunches,stats }) => {
+const StatsPanel = ({ allLaunches, stats }) => {
   return (
     <div className="stats-panel">
       <div className="stat-card">

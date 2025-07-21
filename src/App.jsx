@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Dashboard from './components/Dashboard'
-import StatsPanel from './components/StatsPanel'
-import Filters from './components/Filters';
-import { useRoutes } from "react-router-dom"
+import AllLaunchesList from './components/AllLaunchesList'
+import DetailView from './pages/DetailView'
+import SearchPage from './pages/SearchPage'
+import Layout from './components/Layout'
+import { Route, Routes } from "react-router-dom"
 
 function App() {
   const [allLaunches, setAllLaunches] = useState([]);
@@ -102,33 +103,49 @@ function App() {
 //fix routes and return {element} to render the dashboard and filters
   //useRoutes is used to define the routes for the application
 
- let element = useRoutes([
-{
-  path: "/",
-  element: <Dashboard allLaunches={allLaunches} launchpads={launchpads} filters={filters} />,
-},
-{
-  path: "/",
-  element: <Filters filters={filters} setFilters={setFilters} allLaunches={allLaunches} />
-},
-{
-  path: "/LaunchDetails/:id",
-  element: <DetailView />,
-},
-])
+//  let element = useRoutes([
+// {
+//   path: "/",
+//   element: <Dashboard allLaunches={allLaunches} launchpads={launchpads} filters={filters} />,
+// },
+// {
+//   path: "/",
+//   element: <Filters filters={filters} setFilters={setFilters} allLaunches={allLaunches} />
+// },
+// {
+//   path: "/LaunchDetails/:id",
+//   element: <DetailView />,
+// },
+// ])
 
   return (
     <>
-      <div className="header">
-        <h1>SpaceX Launch Dashboard</h1>
-        <p>Explore SpaceX launch data with filters and statistics</p>
-      </div>
-      <Filters filters={filters} setFilters={setFilters} allLaunches={allLaunches} />
-      
-      <div className="app-container">
-      <StatsPanel allLaunches={allLaunches} stats={stats} />
-      <Dashboard allLaunches={allLaunches} launchpads={launchpads} filters={filters} />
-      </div>
+     <Routes>
+     <Route
+       path="/"
+       element={
+         <Layout
+           allLaunches={allLaunches}
+           stats={stats}
+         />
+       }
+     >
+        <Route
+          index
+          element={
+            <AllLaunchesList allLaunches={allLaunches} launchpads={launchpads} filters={filters} stats={stats}  />
+          }
+        />
+        <Route 
+          path="search" 
+          element={<SearchPage filters={filters} setFilters={setFilters} allLaunches={allLaunches} />} 
+        />
+        <Route 
+          path="launch/:flightNumber" 
+          element={<DetailView launchpads={launchpads} />} 
+        />
+      </Route>
+    </Routes>
     </>
   )
 }

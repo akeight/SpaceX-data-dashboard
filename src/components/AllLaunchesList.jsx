@@ -1,6 +1,6 @@
 import LaunchCard from "./LaunchCard";
 
-const Dashboard = ({ allLaunches, launchpads, filters }) => {
+const AllLaunchesList = ({ allLaunches, launchpads, filters }) => {
 
   const filteredLaunches = allLaunches.filter((launch) => {
   const matchesSearch =
@@ -41,4 +41,4 @@ const Dashboard = ({ allLaunches, launchpads, filters }) => {
   );
 };
 
-export default Dashboard;
+export default AllLaunchesList;

@@ -1,6 +1,10 @@
+import{ Link, Outlet, useParams } from 'react-router-dom';
+
 const LaunchCard = ({ launch, launchpads }) => {
 
   const launchpad = launchpads.find(lp => lp.id === launch.launchpad);
+
+  const { id } = useParams();
 
   return (
     <div className="launch-card">
@@ -34,6 +38,11 @@ const LaunchCard = ({ launch, launchpads }) => {
         </p>
 
         <p>🚀 Launch Site: <span>{launchpad?.locality || "Unknown"}</span></p>
+
+        <Link to={`/LaunchDetails/:${launch.id}`} className="launch-details-link">
+          View Details
+        </Link>
+        <Outlet />
           {launch.links?.webcast && (
         <a
           href={launch.links.webcast}
