@@ -5,6 +5,7 @@ import DetailView from './pages/DetailView'
 import SearchPage from './pages/SearchPage'
 import Layout from './components/Layout'
 import { Route, Routes } from "react-router-dom"
+import DashboardPage from './pages/DashboardPage'
 
 function App() {
   const [allLaunches, setAllLaunches] = useState([]);
@@ -133,7 +134,7 @@ function App() {
         <Route
           index
           element={
-            <AllLaunchesList allLaunches={allLaunches} launchpads={launchpads} filters={filters} stats={stats}  />
+            <DashboardPage allLaunches={allLaunches} launchpads={launchpads} filters={filters} stats={stats}  />
           }
         />
         <Route 
@@ -142,7 +143,9 @@ function App() {
         />
         <Route 
           path="launch/:flightNumber" 
-          element={<DetailView launchpads={launchpads} />} 
+          element={<DetailView
+            allLaunches={allLaunches}
+            launchpads={launchpads} />} 
         />
       </Route>
     </Routes>

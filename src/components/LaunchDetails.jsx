@@ -1,18 +1,12 @@
-import{ Link, Outlet } from 'react-router-dom';
-
-const LaunchCard = ({ launch, launchpads }) => {
-
-  const launchpad = launchpads.find(lp => lp.id === launch.launchpad);
-
-
-  return (
-    <div className="launch-card">
+const LaunchDetails = ({ launch, launchpad }) => {
+    return ( 
+        <div className="launch-details">
       <img 
         src={launch.links.patch.small || "/placeholder.png"} 
         alt={launch.name} 
-        className="launch-card-img" 
+        className="launch-details-img" 
       />
-      <div className="launch-card-content">
+      <div className="launch-details-content">
         <h3>{launch.name}</h3>
         <p>
           Launch Date: <span>{new Date(launch.date_utc).toLocaleDateString()}</span>
@@ -26,7 +20,7 @@ const LaunchCard = ({ launch, launchpads }) => {
                 : launch.success === false
                 ? "status-failure"
                 : "status-upcoming"
-        }
+            }
           >
             {launch.success === true
               ? "Success"
@@ -38,10 +32,9 @@ const LaunchCard = ({ launch, launchpads }) => {
 
         <p>🚀 Launch Site: <span>{launchpad?.locality || "Unknown"}</span></p>
 
-        <Link to={`/launch/${launch.flight_number}`} className="launch-details-link">
-          View Details
-        </Link>
-        <Outlet />
+        <p>Rocket: {launch.rocket?.name || "Unknown Rocket"}</p>
+        <p className="launch-details-description">Details: <span><em>{launch.details || "No details available."}</em></span></p>
+
           {launch.links?.webcast && (
         <a
           href={launch.links.webcast}
@@ -57,5 +50,4 @@ const LaunchCard = ({ launch, launchpads }) => {
   );
 };
 
-export default LaunchCard;
-
+export default LaunchDetails;
