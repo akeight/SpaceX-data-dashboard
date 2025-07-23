@@ -42,15 +42,6 @@ const LaunchCard = ({ launch, launchpads }) => {
           View Details
         </Link>
         <Outlet />
-          {launch.links?.webcast && (
-        <a
-          href={launch.links.webcast}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Watch Launch
-        </a>
-          )}
       </div>
     </div>
 

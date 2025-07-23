@@ -1,8 +1,10 @@
 import { Outlet, Link } from 'react-router-dom';
-import StatsPanel from './StatsPanel';
-import ChartsPanel from './ChartsPanel';  // 🔥 import it
+import ChartsPanel from './ChartsPanel';
+import { useState } from 'react';
 
-export default function Layout({ allLaunches, stats }) {
+export default function Layout({ launchesByYear, launchesByPad}) {
+  const [showGraphs, setShowGraphs] = useState(true);
+
   return (
     <>
      <div className="header">
@@ -10,25 +12,31 @@ export default function Layout({ allLaunches, stats }) {
         <p>Explore SpaceX launch data with filters and statistics</p>
       </div>
     <div className="app-container">
-      <aside className="sidebar">
-        <nav>
+      <aside className="sidebar-components">
+        <div className="sidebar">
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="search">Search</Link></li>
+            <button onClick={() => setShowGraphs(prev => !prev)}>
+          {showGraphs ? 'Hide Graphs' : 'Show Graphs'}
+        </button>
           </ul>
-        </nav>
+        </div>
+        {showGraphs && (
+          <div className="charts-panel">
+            <ChartsPanel 
+              launchesByYear={launchesByYear} 
+              launchesByPad={launchesByPad} 
+            />
+          </div>
+      )}
       </aside>
-      
 
-      {/* make this a flex container so Outlet + ChartsPanel sit side‑by‑side */}
-      <main className="main-content">
-        <div className="primary-content">
+      <div className="primary-content">
           <Outlet />
         </div>
-        <aside className="charts-aside">
-          <ChartsPanel />
-        </aside>
-      </main>
+        
+      
       
     </div>
     </>

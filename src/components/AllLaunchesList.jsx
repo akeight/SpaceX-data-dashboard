@@ -30,11 +30,11 @@ const AllLaunchesList = ({ allLaunches, launchpads, filters }) => {
 
   return (
     <div className="dashboard">
-      <h2>All Launches</h2>
+      <h2>Launches</h2>
       <ul className="launch-list">
        {filteredLaunches.map((launch) => (
             <li key={launch.id}>
-                <LaunchCard launch={launch} launchpads={launchpads} />
+                <LaunchCard launch={launch} launchpads={launchpads} filters={filters} />
             </li>
         ))}
       </ul>

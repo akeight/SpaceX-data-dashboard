@@ -1,16 +1,16 @@
 // ChartsPanel.jsx
+import LaunchesPerPadChart from './charts/LaunchesPerPadChart';
+import LaunchesPerYearChart from './charts/LaunchesPerYearChart';
 import ChartsCard from './ChartsCard';
 
-const ChartsPanel = () => (
-  <div className="charts-panel">
-    <ChartsCard title="Launch Success Rate">
-      {/* your <RechartsComposedChart> goes here */}
-    </ChartsCard>
+const ChartsPanel = ({ launchesByPad, launchesByYear }) => (
+  <div className="charts">
     <ChartsCard title="Launches by Year">
-      {/* your <BarChart> or whatever */}
+      <LaunchesPerYearChart data={launchesByYear} />
     </ChartsCard>
+
     <ChartsCard title="Launches by Site">
-      {/* your <PieChart> or whatever */}
+      <LaunchesPerPadChart data={launchesByPad} />
     </ChartsCard>
   </div>
 );

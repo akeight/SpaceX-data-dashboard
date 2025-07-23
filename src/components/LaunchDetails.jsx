@@ -32,7 +32,7 @@ const LaunchDetails = ({ launch, launchpad }) => {
 
         <p>🚀 Launch Site: <span>{launchpad?.locality || "Unknown"}</span></p>
 
-        <p>Rocket: {launch.rocket?.name || "Unknown Rocket"}</p>
+        <p>Location: {launchpad?.region || "Unknown Region"}</p>
         <p className="launch-details-description">Details: <span><em>{launch.details || "No details available."}</em></span></p>
 
           {launch.links?.webcast && (

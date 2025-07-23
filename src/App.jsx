@@ -9,7 +9,7 @@ import DashboardPage from './pages/DashboardPage'
 
 function App() {
   const [allLaunches, setAllLaunches] = useState([]);
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState({
   searchTerm: "",
   selectedYear: "All",
@@ -28,7 +28,7 @@ function App() {
   });
 
   const fetchLaunches = async () => {
-    setLoading(true);
+    //setLoading(true);
     try {
       const res = await fetch("https://api.spacexdata.com/v5/launches");
       const data = await res.json();
@@ -40,7 +40,7 @@ function App() {
   };
   
   const fetchLaunchpads = async () => {
-    setLoading(true);
+    //setLoading(true);
     try {
       const res = await fetch("https://api.spacexdata.com/v4/launchpads");
       const data = await res.json();
@@ -56,6 +56,7 @@ function App() {
     try {
       const res = await fetch("https://api.spacexdata.com/v4/rockets");
       const data = await res.json();
+      console.log("Rocket data:", data);
       setRockets(data);
     } catch (err) {
       console.error("Error fetching rockets:", err);
@@ -101,23 +102,28 @@ function App() {
   });
 }, [allLaunches, rockets, launchpads]);
 
-//fix routes and return {element} to render the dashboard and filters
-  //useRoutes is used to define the routes for the application
+// Example grouping for launches per year
+const launchesByYear = Object.values(
+  allLaunches.reduce((acc, { date_utc }) => {
+    const year = new Date(date_utc).getFullYear();
+    acc[year] = acc[year] || { year: String(year), count: 0 };
+    acc[year].count += 1;
+    return acc;
+  }, {})
+);
 
-//  let element = useRoutes([
-// {
-//   path: "/",
-//   element: <Dashboard allLaunches={allLaunches} launchpads={launchpads} filters={filters} />,
-// },
-// {
-//   path: "/",
-//   element: <Filters filters={filters} setFilters={setFilters} allLaunches={allLaunches} />
-// },
-// {
-//   path: "/LaunchDetails/:id",
-//   element: <DetailView />,
-// },
-// ])
+// Example grouping for launches per launchpad
+const launchesByPad = Object.values(
+  allLaunches.reduce((acc, { launchpad }) => {
+    acc[launchpad] = acc[launchpad] || { padId: launchpad, count: 0 };
+    acc[launchpad].count += 1;
+    return acc;
+  }, {})
+).map(({ padId, count }) => {
+  const pad = launchpads.find(lp => lp.id === padId);
+  return { padName: pad?.name || 'Unknown', count };
+});
+
 
   return (
     <>
@@ -128,25 +134,40 @@ function App() {
          <Layout
            allLaunches={allLaunches}
            stats={stats}
+           launchesByYear={launchesByYear}
+           launchesByPad={launchesByPad}
          />
        }
      >
         <Route
           index
           element={
-            <DashboardPage allLaunches={allLaunches} launchpads={launchpads} filters={filters} stats={stats}  />
+            <DashboardPage
+              allLaunches={allLaunches}
+              launchpads={launchpads}
+              filters={filters}
+              setFilters={setFilters}
+              stats={stats}
+            />
           }
         />
         <Route 
           path="search" 
-          element={<SearchPage filters={filters} setFilters={setFilters} allLaunches={allLaunches} />} 
+          element={
+          <SearchPage
+            filters={filters}
+            setFilters={setFilters}
+            allLaunches={allLaunches}
+            launchpads={launchpads}
+          />} 
         />
         <Route 
           path="launch/:flightNumber" 
-          element={<DetailView
+          element={
+          <DetailView
             allLaunches={allLaunches}
-            launchpads={launchpads} />} 
-        />
+            launchpads={launchpads}
+          />} />
       </Route>
     </Routes>
     </>

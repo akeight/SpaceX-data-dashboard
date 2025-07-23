@@ -19,7 +19,12 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #535bf2b8;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
 }
 
 body {
@@ -31,20 +36,78 @@ body {
 
 .app-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
   padding: 1rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
 }
 
-h3 {
-  color: #242424;
+.primary-content {
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-components {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 255px;
+  width: 270px;
+  border: #9e9b9b81 solid 1px;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3rem;
+  transform: translate(-20px);
+}
+
+.sidebar li {
+  background-color: #383737;
+  padding: .25rem 1rem;
+  border: 1px solid #ddd;
+  box-shadow: #242424;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.sidebar li:hover {
+  background-color: #928f8f6a;
+  padding: .25rem 1rem;
+  border-radius: 0.5rem;
+  transform: translate(5%);
+}
+
+button {
+  background-color: #383737;
+  padding: .25rem 0.75rem;
+  border-radius: 0.5rem;
+} 
+
+button:hover {
+  background-color: #928f8f6a;
+  padding: .25rem 0.75rem;
+  border-radius: 0.5rem;
+  transform: translate(5%);
 }
 
 .dashboard {
@@ -54,6 +117,19 @@ h3 {
   border-radius: 5px;
   gap: 1rem;
   padding: 1rem;
+}
+
+.charts-card {
+  margin: 15px;
+  height: 380px;
+  width: 270px;
+  border: #9e9b9b81 solid 1px;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.charts-content {
+  display: flex;
 }
 
 .launch-card {
@@ -170,62 +246,24 @@ li {
   margin: 0;
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  height: 50px;
-  width: 1050px;
-  border: #9e9b9b81 solid 1px;
-  border-radius: 5px;
-  margin-top: 15px;
-  padding-top: 20px;
-  padding: 1rem;
-}
-
-.sidebar ul {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
-}
-
-.sidebar li {
-  background-color: #383737;
-  padding: .5rem 1.25rem;
-  border-radius: 0.5rem;
-  text-transform: uppercase;
-}
-
-.sidebar li:hover {
-  background-color: #928f8f6a;
-  padding: .5rem 1.25rem;
-  border-radius: 0.5rem;
-  transform: translate(5%);
-}
-
 .filters-aside {
-  float: left;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  height: 450px;
-  width: 300px;
-  margin-bottom: 1.5rem;
+  height: 200px;
+  width: 700px;
   border: #9e9b9b81 solid 1px;
   border-radius: 5px;
-  margin-top: 15px;
   margin-right: 0.75rem;
-  padding-top: 30px;
 }
 
 .filter-panel {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 4rem;
   width: 75%;
 }
 
@@ -238,6 +276,7 @@ li {
 
 .search-input,
 .year-select {
+  height: 2.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: none;
