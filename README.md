@@ -1,4 +1,4 @@
-# Web Development Project 6 - *🚀 SpaceX Launch Dashboard Expanded*
+# *🚀 SpaceX Launch Dashboard*
 
 Submitted by: **Allyson Keightley**
 
