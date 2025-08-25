@@ -25,15 +25,10 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] The site’s customized dashboard contains more content that explains what is interesting about the data 
-  - e.g., an additional description, graph annotation, suggestion for which filters to use, or an additional page that explains more about the data
 - [x] The site allows users to toggle between different data visualizations
   - User should be able to use some mechanism to toggle between displaying and hiding visualizations 
 
   
-The following **additional** features are implemented:
-
-* [x] The search filters are displayed with only the "/search" page for simple navigation and UX. 
 
 ## Video Walkthrough
 
@@ -46,10 +41,6 @@ GIF created with ...
 
 [Kap](https://getkap.co/) for macOS
 
-
-## Notes
-
-This week was challenging for me. In order to make my routing and components work to specification, I needed to update the previous component layout. Reconfiguring that and updating the CSS was a bit of a stuggle for me to go back through again. I also had a bit of a hard time figuring out the routing and making sure that I was passing through all the correct information.
 
 ## License
 
